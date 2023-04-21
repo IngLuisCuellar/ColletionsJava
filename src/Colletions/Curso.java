@@ -1,6 +1,6 @@
 package Colletions;
 
-public class Curso {
+public class Curso implements Comparable<Curso>{
 
 
     private String nombre;
@@ -33,4 +33,10 @@ public class Curso {
         return this.nombre;
     }
 
+
+    //Se implementa
+    @Override
+    public int compareTo(Curso o) {
+        return this.nombre.compareTo(o.getNombre());
+    }
 }

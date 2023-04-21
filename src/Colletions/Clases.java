@@ -22,6 +22,11 @@ public class Clases {
 
         System.out.println(cursos);
 
+        //Se debe implementar Comparable en la clase
+        Collections.sort(cursos);
+        //cursos.sort(Collections.reverseOrder());
+
+        System.out.println(cursos);
 
     }
 }
