@@ -5,9 +5,9 @@ import java.util.stream.Collectors;
 
 public class Clases {
     public static void main(String[] args) {
-        Curso curso1 = new Curso("Geometria", 20);
+        Curso curso1 = new Curso("Geometria", 10);
         Curso curso2 = new Curso("Fisica", 30);
-        Curso curso3 = new Curso("Quimica", 30);
+        Curso curso3 = new Curso("Quimica", 50);
         Curso curso4 = new Curso("Matematicas", 35);
         Curso curso5 = new Curso("Hisotoria", 20);
 
@@ -22,11 +22,21 @@ public class Clases {
 
         System.out.println(cursos);
 
-        //Se debe implementar Comparable en la clase
-        Collections.sort(cursos);
-        //cursos.sort(Collections.reverseOrder());
-
+        //Método 1
+        cursos.sort(Comparator.comparing(Curso::getNombre));
         System.out.println(cursos);
 
+
+        //Método 2 usando Colletions
+        Collections.sort(cursos,Comparator.comparing(Curso::getNombre).reversed());
+        System.out.println(cursos);
+
+        //Método 3 Streams --> Requiere usar el método collect(Colletors.toList()) y la interfaz List<> de Java.util
+        List<Curso> cursoList = cursos.stream().sorted(Comparator.comparingInt(Curso::getTiempo)).collect(Collectors.toList());
+        System.out.println(cursoList);
+
+        //Implementando un  filtro usando lamnda y streams
+        List<Curso> cursoListFilter = cursos.stream().filter(curso -> !curso.getNombre().equalsIgnoreCase("Quimica")).sorted(Comparator.comparingInt(Curso::getTiempo)).collect(Collectors.toList());
+        System.out.println(cursoListFilter);
     }
 }
