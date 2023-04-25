@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class ClaseUsingType {
     public static void main(String[] args) {
-        Curso curso1 = new Curso("Geometria", 10, new ArrayList<>() );
+        Curso curso1 = new Curso("Geometria", 10);
         curso1.addClase(new Clase("ArrayList"));
         curso1.addClase(new Clase("Linkedlist"));
         curso1.addClase(new Clase("List"));
